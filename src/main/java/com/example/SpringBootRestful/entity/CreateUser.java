@@ -1,6 +1,10 @@
 package com.example.SpringBootRestful.entity;
+//@Data
+import org.springframework.beans.BeanUtils;
 
-public class User {
+import javax.jws.soap.SOAPBinding;
+
+public class CreateUser {
     private Integer id;
     private String name;
 
@@ -20,19 +24,16 @@ public class User {
         this.name = name;
     }
 
-    public User(Integer id, String name) {
+    public CreateUser(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
-
-    public User() {
+    public CreateUser() {
+    }
+    public static User toEmployee(CreateUser createUser) {
+        User result = new User();
+        BeanUtils.copyProperties(createUser, result);
+        return result;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }

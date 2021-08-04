@@ -20,17 +20,17 @@ public class UserService {
         userData.add(user);
     }
 
-    public void updateUserById(int userId, User user) throws BusinessException {
+    public void updateUserById(Integer userId, User user) throws BusinessException {
         User userInfo = getUserById(userId);
         userInfo.setName(user.getName());
         save(userInfo);
     }
 
-    public void deleteUserById(int userId) throws BusinessException {
+    public void deleteUserById(Integer userId) throws BusinessException {
         deleteById(userId);
     }
 
-    private User getUserById(int userId) throws BusinessException {
+    private User getUserById(Integer userId) throws BusinessException {
         return userData.stream()
                 .filter(item -> item.getId() == userId)
                 .findFirst()
@@ -49,7 +49,7 @@ public class UserService {
         userData.set(index, userInfo);
     }
 
-    private void deleteById(int userId) throws BusinessException {
+    private void deleteById(Integer userId) throws BusinessException {
         User user = getUserById(userId);
         userData.remove(user);
     }
