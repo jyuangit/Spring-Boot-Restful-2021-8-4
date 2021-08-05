@@ -17,13 +17,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/list")
+    @GetMapping("")
     //ToDo:在上一行代码("")中填写合适的RestfulApi
     public ResponseEntity getAllUser() {
         return new ResponseEntity<>(userService.getAllUser(), HttpStatus.OK);
     }
 
-    @PostMapping("/add")
+    @PostMapping("")
     //ToDo:在上一行代码("")中填写合适的RestfulApi
     public ResponseEntity addUser(@RequestBody CreateUser createUser) {
 
@@ -31,14 +31,14 @@ public class UserController {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
-    @PutMapping("/edit/{userId}")
+    @PutMapping("/{userId}")
     //ToDo:在上一行代码("")中填写合适的RestfulApi
     public ResponseEntity updateUserById(@PathVariable Integer userId, @RequestBody User user) throws BusinessException {
         userService.updateUserById(userId, user);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
-    @DeleteMapping("/del/{userId}")
+    @DeleteMapping("/{userId}")
     //ToDo:在上一行代码("")中填写合适的RestfulApi
     public ResponseEntity deleteUserById(@PathVariable Integer userId) throws BusinessException {
         userService.deleteUserById(userId);
